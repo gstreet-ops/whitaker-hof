@@ -238,6 +238,44 @@
     border-top:1px solid var(--rule);
   }
 
+  .band{margin:0;padding:0;border-top:1px solid var(--rule)}
+  .band-img{position:relative;overflow:hidden;background:var(--ink)}
+  .band-img img{
+    display:block;width:100%;
+    height:clamp(220px,44vw,480px);
+    object-fit:cover;object-position:center 58%;
+    filter:grayscale(.94) contrast(1.06);
+  }
+  .band-img::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:var(--ink);mix-blend-mode:color;opacity:.62;
+    transition:opacity .55s ease;
+  }
+  .band-img:hover::after{opacity:0}
+  .band figcaption{
+    font-family:var(--data);font-size:.6875rem;letter-spacing:.08em;
+    line-height:1.7;color:var(--graphite);
+    padding-top:.85rem;max-width:70ch;
+  }
+  .band figcaption b{color:var(--ink);font-weight:500}
+
+  .inset{margin:1rem 0 0;max-width:420px}
+  .inset img{
+    display:block;width:100%;aspect-ratio:16/9;object-fit:cover;
+    filter:grayscale(.94) contrast(1.05);border-radius:2px;
+  }
+  .inset figcaption{
+    font-family:var(--data);font-size:.625rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--graphite);margin-top:.5rem;
+  }
+
+  .credits{
+    font-family:var(--data);font-size:.625rem;letter-spacing:.06em;
+    line-height:1.9;color:var(--graphite);padding-top:1.5rem;
+    border-top:1px solid var(--rule);margin-top:2rem;
+  }
+  .credits a{color:var(--graphite)}
+
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
     .cell{opacity:1}
@@ -278,6 +316,15 @@
     </aside>
   </div>
 </header>
+
+<figure class="band">
+  <div class="band-img">
+    <img src="img/tiger-stadium-interior.jpg" alt="Tiger Stadium in Detroit, seen from the third-base side during a game, with a full crowd in the double-decked grandstand and light towers above." loading="lazy" width="1800" height="1220">
+  </div>
+  <div class="wrap">
+    <figcaption><b>Tiger Stadium, 1998.</b> The infield dirt just right of second base is where Whitaker stood for 2,308 games, every one of them for Detroit. The ballpark closed the following year. Photograph by Rick Dikeman, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons.</figcaption>
+  </div>
+</figure>
 
 <section class="wrap">
   <p class="eyebrow">The record</p>
@@ -427,7 +474,13 @@
     </div>
     <div class="ev">
       <span class="when">Aug 2022</span>
-      <p class="what">The Tigers retire his number 1 &mdash; an honor the franchise had almost entirely reserved for Hall of Famers.</p>
+      <div>
+        <p class="what">The Tigers retire his number 1 &mdash; an honor the franchise had almost entirely reserved for Hall of Famers.</p>
+        <figure class="inset">
+          <img src="img/comerica-park.jpg" alt="Comerica Park, the Detroit Tigers ballpark that replaced Tiger Stadium in 2000." loading="lazy">
+          <figcaption>Comerica Park, where the number hangs. CC BY-SA 4.0 via Wikimedia Commons</figcaption>
+        </figure>
+      </div>
     </div>
     <div class="ev hit">
       <span class="when">Nov 2025</span>
@@ -497,6 +550,10 @@
     <span>Voting records via the National Baseball Hall of Fame</span>
     <span>Updated August 2026</span>
   </footer>
+  <p class="credits">
+    Tiger Stadium interior &mdash; photograph by Rick Dikeman, licensed <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Inside_Tiger_Stadium,_Detroit.jpg">Wikimedia Commons</a>. Displayed unmodified; tone treatment applied in CSS only.<br>
+    Comerica Park &mdash; licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Comerica_Park,_Home_of_the_Detroit_Tigers_Baseball_Team.jpg">Wikimedia Commons</a>. Displayed unmodified; tone treatment applied in CSS only.
+  </p>
 </div>
 
 <script>
