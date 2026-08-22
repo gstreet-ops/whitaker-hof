@@ -276,6 +276,37 @@
   }
   .credits a{color:var(--graphite)}
 
+  .placard{
+    display:flex;align-items:center;flex-wrap:wrap;
+    gap:clamp(1.25rem,4vw,3rem);
+    padding-bottom:clamp(2.5rem,5vw,3.5rem);
+    margin-bottom:clamp(2.5rem,5vw,3.5rem);
+    border-bottom:1px solid #2B3B48;
+  }
+  .numeral{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(6rem,17vw,13rem);line-height:.7;
+    color:var(--lou);letter-spacing:-.02em;
+  }
+  .placard-meta{
+    border-left:1px solid #2B3B48;
+    padding-left:clamp(1.25rem,3vw,2.25rem);
+    font-family:var(--data);
+  }
+  .placard-meta .who{
+    font-size:clamp(1rem,.8rem + .8vw,1.5rem);font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--card);
+    margin:0 0 .55rem;
+  }
+  .placard-meta .yrs{
+    font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+    color:#7E8F98;margin:0 0 .9rem;
+  }
+  .placard-meta .note{
+    font-family:var(--body);font-size:.9375rem;line-height:1.55;
+    color:#CFD7DA;margin:0;max-width:34ch;
+  }
+
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
     .cell{opacity:1}
@@ -535,6 +566,14 @@
 
 <section class="close">
   <div class="wrap">
+    <div class="placard">
+      <span class="numeral" aria-hidden="true">1</span>
+      <div class="placard-meta">
+        <p class="who">Whitaker</p>
+        <p class="yrs">1977 &ndash; 1995 &middot; Retired Aug 6, 2022</p>
+        <p class="note">Detroit had reserved the honor almost entirely for Hall of Famers. They hung his number anyway.</p>
+      </div>
+    </div>
     <p class="eyebrow">The verdict</p>
     <h2>He belongs</h2>
     <p>Not as an inner-circle immortal. Whitaker was a four-to-five win player who showed up every day for nineteen years, and the case against him &mdash; that peak dominance should count for more than accumulated value &mdash; is a legitimate philosophy held by serious people.</p>
