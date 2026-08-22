@@ -310,6 +310,22 @@
     line-height:1.6;
   }
 
+  .swap{
+    display:block;border:1px solid var(--rule);background:var(--card);
+    padding:1.5rem 1.6rem;margin-top:2.5rem;text-decoration:none;
+    transition:border-color .2s ease,background .2s ease;
+  }
+  .swap:hover{border-color:var(--ink);background:#E9ECE8}
+  .swap .k{
+    font-family:var(--data);font-size:.6875rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--graphite);display:block;margin-bottom:.5rem;
+  }
+  .swap .t{
+    font-family:var(--display);font-size:clamp(1.25rem,1rem + 1vw,1.75rem);
+    line-height:1.15;text-transform:uppercase;display:block;
+  }
+  .swap .t::after{content:" \2192";color:var(--lou)}
+
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
     .cell{opacity:1}
@@ -593,6 +609,11 @@
 </section>
 
 <div class="wrap">
+  <a class="swap" href="against/">
+    <span class="k">The other side of this argument</span>
+    <span class="t">Never once &mdash; the case against Lou Whitaker</span>
+  </a>
+
   <footer>
     <span>Statistics via Baseball-Reference &amp; JAWS</span>
     <span>Voting records via the National Baseball Hall of Fame</span>
