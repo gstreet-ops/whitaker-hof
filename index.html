@@ -118,7 +118,7 @@
     font-family:var(--display);font-weight:400;
     font-size:clamp(3.25rem,1.5rem + 11vw,9rem);
     line-height:.82;letter-spacing:-.005em;text-transform:uppercase;
-    margin:2.25rem 0 0;
+    margin:0;
   }
   .hero h1 span{display:block}
   .hero h1 .sub{
@@ -276,35 +276,39 @@
   }
   .credits a{color:var(--graphite)}
 
-  .placard{
-    display:flex;align-items:center;flex-wrap:wrap;
-    gap:clamp(1.25rem,4vw,3rem);
-    padding-bottom:clamp(2.5rem,5vw,3.5rem);
-    margin-bottom:clamp(2.5rem,5vw,3.5rem);
-    border-bottom:1px solid #2B3B48;
+  .nameplate{
+    display:flex;align-items:flex-start;flex-wrap:wrap;
+    gap:clamp(1rem,3vw,2.5rem);
+    margin-top:2.25rem;
   }
+  .jersey{flex:none;padding-top:.4rem}
   .numeral{
+    display:block;
     font-family:var(--display);font-weight:400;
-    font-size:clamp(6rem,17vw,13rem);line-height:.7;
+    font-size:clamp(4rem,10vw,7.5rem);line-height:.78;
     color:var(--lou);letter-spacing:-.02em;
   }
-  .placard-meta{
-    border-left:1px solid #2B3B48;
-    padding-left:clamp(1.25rem,3vw,2.25rem);
-    font-family:var(--data);
+  .jersey-label{
+    display:block;max-width:11ch;
+    font-family:var(--data);font-size:.625rem;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--graphite);line-height:1.6;
+    margin-top:.7rem;padding-top:.55rem;
+    border-top:1px solid var(--rule);
   }
-  .placard-meta .who{
-    font-size:clamp(1rem,.8rem + .8vw,1.5rem);font-weight:600;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--card);
-    margin:0 0 .55rem;
+
+  .record-head{display:grid;gap:1.75rem;grid-template-columns:1fr;align-items:start}
+  @media(min-width:820px){.record-head{grid-template-columns:1fr 260px;gap:3rem}}
+  .portrait{margin:0}
+  .portrait img{
+    display:block;width:100%;max-width:260px;
+    filter:grayscale(1) contrast(1.08);border-radius:2px;
   }
-  .placard-meta .yrs{
-    font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
-    color:#7E8F98;margin:0 0 .9rem;
-  }
-  .placard-meta .note{
-    font-family:var(--body);font-size:.9375rem;line-height:1.55;
-    color:#CFD7DA;margin:0;max-width:34ch;
+  .portrait figcaption{
+    font-family:var(--data);font-size:.625rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--graphite);
+    margin-top:.6rem;padding-top:.55rem;border-top:1px solid var(--rule);
+    line-height:1.6;
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -330,11 +334,17 @@
     <span class="key">2.9% &mdash; 5% required to stay on</span>
   </div>
 
-  <h1>
-    <span>Lou</span>
-    <span>Whitaker</span>
-    <span class="sub">Second base &middot; Detroit Tigers &middot; 1977&ndash;1995 &middot; 75.1 WAR &middot; Not in the Hall of Fame</span>
-  </h1>
+  <div class="nameplate">
+    <div class="jersey">
+      <span class="numeral" aria-hidden="true">1</span>
+      <span class="jersey-label">Uniform No.&nbsp;1 &mdash; retired by Detroit, 2022</span>
+    </div>
+    <h1>
+      <span>Lou</span>
+      <span>Whitaker</span>
+      <span class="sub">Second base &middot; Detroit Tigers &middot; 1977&ndash;1995 &middot; 75.1 WAR &middot; Not in the Hall of Fame</span>
+    </h1>
+  </div>
 
   <div class="hero-body">
     <div>
@@ -359,8 +369,16 @@
 
 <section class="wrap">
   <p class="eyebrow">The record</p>
-  <h2>What he actually did</h2>
-  <p>A .276 average with a .363 on-base percentage and a 117 OPS+, built on power and plate discipline that were unusual at the position, plus a glove good enough for three Gold Gloves. He appeared in 2,390 games and played second base in 2,308 of them. He never played anywhere else.</p>
+  <div class="record-head">
+    <div>
+      <h2>What he actually did</h2>
+      <p>A .276 average with a .363 on-base percentage and a 117 OPS+, built on power and plate discipline that were unusual at the position, plus a glove good enough for three Gold Gloves. He appeared in 2,390 games and played second base in 2,308 of them. He never played anywhere else.</p>
+    </div>
+    <figure class="portrait">
+      <img src="img/whitaker-portrait.jpg" alt="Lou Whitaker in a Detroit Tigers cap, early in his career." loading="lazy" width="388" height="545">
+      <figcaption>Whitaker early in his Detroit career</figcaption>
+    </figure>
+  </div>
 
   <div class="strip">
     <div class="stat"><span class="n">75.1</span><span class="l">Career bWAR</span></div>
@@ -493,7 +511,12 @@
   <div class="tl">
     <div class="ev">
       <span class="when">Oct 1995</span>
-      <p class="what">Whitaker retires after nineteen seasons, all with Detroit.</p>
+      <div>
+        <p class="what">Whitaker retires after nineteen seasons, all with Detroit.</p>
+        <figure class="inset" style="max-width:230px">
+          <img src="img/whitaker-swing.jpg" alt="Lou Whitaker batting for the Tigers, number 1 and his name visible on the back of his jersey." loading="lazy" style="aspect-ratio:auto">
+        </figure>
+      </div>
     </div>
     <div class="ev hit">
       <span class="when">Jan 2001</span>
@@ -506,7 +529,7 @@
     <div class="ev">
       <span class="when">Aug 2022</span>
       <div>
-        <p class="what">The Tigers retire his number 1 &mdash; an honor the franchise had almost entirely reserved for Hall of Famers.</p>
+        <p class="what"><b>Detroit retires his No. 1.</b> The franchise had reserved that honor almost entirely for Hall of Famers. They hung his number anyway.</p>
         <figure class="inset">
           <img src="img/comerica-park.jpg" alt="Comerica Park, the Detroit Tigers ballpark that replaced Tiger Stadium in 2000." loading="lazy">
           <figcaption>Comerica Park, where the number hangs. CC BY-SA 4.0 via Wikimedia Commons</figcaption>
@@ -566,14 +589,6 @@
 
 <section class="close">
   <div class="wrap">
-    <div class="placard">
-      <span class="numeral" aria-hidden="true">1</span>
-      <div class="placard-meta">
-        <p class="who">Whitaker</p>
-        <p class="yrs">1977 &ndash; 1995 &middot; Retired Aug 6, 2022</p>
-        <p class="note">Detroit had reserved the honor almost entirely for Hall of Famers. They hung his number anyway.</p>
-      </div>
-    </div>
     <p class="eyebrow">The verdict</p>
     <h2>He belongs</h2>
     <p>Not as an inner-circle immortal. Whitaker was a four-to-five win player who showed up every day for nineteen years, and the case against him &mdash; that peak dominance should count for more than accumulated value &mdash; is a legitimate philosophy held by serious people.</p>
