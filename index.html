@@ -1,128 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaching Constant | Where Coaching Becomes Culture</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15 of 515 — The Lou Whitaker Hall of Fame Case</title>
+<meta name="description" content="Lou Whitaker got 2.9% of the Hall of Fame vote in 2001 and fell off the ballot in one year. The record says he belongs in Cooperstown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14212E;
+    --ink-soft:#3D4E5C;
+    --paper:#E4E7E3;
+    --card:#F1F3EF;
+    --rule:#C3CAC4;
+    --graphite:#6C7A78;
+    --lou:#E8541B;
+    --lou-dim:#F5C9B4;
+
+    --display:'Anton',Impact,'Haettenschweiler','Arial Narrow',sans-serif;
+    --body:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --data:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+
+    --gutter:clamp(1.25rem,5vw,4.5rem);
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:clamp(1rem,0.96rem + 0.2vw,1.0625rem);
+    line-height:1.62;
+    background-image:linear-gradient(180deg,#EAEDE9 0%,var(--paper) 42%);
+    background-repeat:no-repeat;
+  }
+  ::selection{background:var(--lou);color:#fff}
+  a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--lou);outline-offset:3px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+
+  .eyebrow{
+    font-family:var(--data);
+    font-size:.6875rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--graphite);
+    margin:0 0 1.1rem;
+    display:flex;align-items:center;gap:.75rem;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
+  h2{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(1.75rem,1.2rem + 2.4vw,3rem);
+    line-height:.98;
+    letter-spacing:.005em;
+    text-transform:uppercase;
+    margin:0 0 1.2rem;
+  }
+  h3{
+    font-family:var(--data);
+    font-size:.8125rem;
+    font-weight:600;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin:0 0 .85rem;
+  }
+  p{margin:0 0 1.05rem;max-width:64ch}
+  .lede{font-size:clamp(1.125rem,1rem + 0.55vw,1.375rem);line-height:1.5}
+  strong{font-weight:600}
+  .lou{color:var(--lou)}
+
+  section{padding-block:clamp(3.25rem,7vw,6rem);border-top:1px solid var(--rule)}
+  section:first-of-type{border-top:0}
+
+  .hero{padding-top:clamp(2rem,5vw,3.5rem);padding-bottom:clamp(2.5rem,6vw,4.5rem)}
+  .ballot-label{
+    display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;align-items:baseline;
+    font-family:var(--data);font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--graphite);margin-bottom:.9rem;
+  }
+  .ballot-label b{color:var(--lou);font-weight:600;letter-spacing:.16em}
+
+  #grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(9px,1fr));
+    gap:3px;
+    margin-bottom:1.5rem;
+  }
+  .cell{
+    aspect-ratio:1;
+    background:var(--rule);
+    border-radius:1px;
+    opacity:0;
+    animation:in .5s ease forwards;
+  }
+  .cell.yes{background:var(--lou)}
+  @keyframes in{to{opacity:1}}
+
+  .keyline{
+    display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;
+    font-family:var(--data);font-size:.6875rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--graphite);
+    padding-bottom:2.5rem;border-bottom:1px solid var(--rule);
+  }
+  .key{display:inline-flex;align-items:center;gap:.45rem}
+  .swatch{width:9px;height:9px;border-radius:1px;background:var(--rule);display:inline-block}
+  .swatch.yes{background:var(--lou)}
+
+  .hero h1{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(3.25rem,1.5rem + 11vw,9rem);
+    line-height:.82;letter-spacing:-.005em;text-transform:uppercase;
+    margin:2.25rem 0 0;
+  }
+  .hero h1 span{display:block}
+  .hero h1 .sub{
+    font-family:var(--data);font-size:clamp(.75rem,.6rem + .5vw,1rem);
+    font-weight:500;letter-spacing:.22em;color:var(--graphite);
+    margin-top:1.15rem;line-height:1.5;
+  }
+  .hero-body{margin-top:2.5rem;display:grid;gap:2rem;grid-template-columns:1fr}
+  @media(min-width:820px){.hero-body{grid-template-columns:1.35fr .8fr;gap:3.5rem}}
+  .verdict-card{
+    background:var(--ink);color:var(--card);
+    padding:1.6rem 1.5rem;border-radius:2px;align-self:start;
+  }
+  .verdict-card h3{color:var(--lou);margin-bottom:.6rem}
+  .verdict-card p{margin:0;font-size:.9375rem;line-height:1.55;color:#D6DCDE}
+
+  .strip{
+    display:grid;gap:1px;background:var(--rule);
+    grid-template-columns:repeat(2,1fr);border:1px solid var(--rule);
+  }
+  @media(min-width:640px){.strip{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:960px){.strip{grid-template-columns:repeat(6,1fr)}}
+  .stat{background:var(--card);padding:1.15rem 1rem 1.05rem}
+  .stat .n{
+    font-family:var(--display);font-size:clamp(1.7rem,1.2rem + 1.6vw,2.4rem);
+    line-height:1;display:block;
+  }
+  .stat .l{
+    font-family:var(--data);font-size:.625rem;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--graphite);display:block;margin-top:.5rem;
+  }
+
+  .chart{margin-top:2rem;border-top:1px solid var(--rule)}
+  .row{
+    display:grid;grid-template-columns:minmax(94px,140px) 1fr auto;
+    gap:.75rem;align-items:center;
+    padding:.62rem 0;border-bottom:1px solid var(--rule);
+  }
+  .row .name{
+    font-family:var(--data);font-size:.75rem;letter-spacing:.02em;
+    display:flex;align-items:center;gap:.45rem;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;flex:none;border:1.5px solid var(--ink)}
+  .dot.in{background:var(--ink)}
+  .dot.out{background:transparent;border-color:var(--lou)}
+  .track{position:relative;height:15px}
+  .bar{
+    position:absolute;inset-block:0;left:0;
+    background:var(--ink-soft);border-radius:0 1px 1px 0;
+    transform-origin:left;
+  }
+  .row.me .bar{background:var(--lou)}
+  .row.me .name{color:var(--lou);font-weight:600}
+  .row .v{font-family:var(--data);font-size:.75rem;color:var(--graphite);min-width:3.4rem;text-align:right}
+  .row.me .v{color:var(--lou)}
+  .chart-key{
+    display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-top:1rem;
+    font-family:var(--data);font-size:.6875rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--graphite);
+  }
+
+  .scroller{overflow-x:auto;margin-top:1.75rem;border:1px solid var(--rule);background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-family:var(--data);font-size:.8125rem}
+  th,td{padding:.6rem .8rem;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--card)}
+  thead th{
+    font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--graphite);font-weight:500;border-bottom:1px solid var(--ink);
+  }
+  tbody tr:last-child td{border-bottom:0}
+  tr.me td{background:#FBE7DD;color:var(--lou);font-weight:600}
+  tr.me td:first-child{background:#FBE7DD}
+  .status{font-size:.6875rem;letter-spacing:.06em;color:var(--graphite)}
+  tr.me .status{color:var(--lou)}
+
+  .split{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2rem}
+  @media(min-width:800px){.split{grid-template-columns:1fr 1fr}}
+  .col{background:var(--card);padding:1.6rem 1.5rem}
+  .col.for{border-top:3px solid var(--lou)}
+  .col.against{border-top:3px solid var(--ink)}
+  .col ul{margin:0;padding-left:1.1rem}
+  .col li{margin-bottom:.85rem;max-width:52ch}
+  .col li:last-child{margin-bottom:0}
+  .col li b{font-weight:600}
+
+  .tl{margin-top:2rem;border-left:1px solid var(--rule);padding-left:0}
+  .ev{display:grid;grid-template-columns:1fr;gap:.2rem;padding:.95rem 0 .95rem 1.5rem;position:relative}
+  @media(min-width:720px){
+    .ev{grid-template-columns:120px 1fr;gap:1.5rem;align-items:baseline}
+  }
+  .ev::before{
+    content:"";position:absolute;left:-4px;top:1.45rem;
+    width:7px;height:7px;border-radius:50%;background:var(--rule);
+  }
+  .ev.hit::before{background:var(--lou)}
+  .ev .when{font-family:var(--data);font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite)}
+  .ev.hit .when{color:var(--lou)}
+  .ev .what{margin:0;max-width:56ch}
+  .ev .what b{font-weight:600}
+
+  .close{background:var(--ink);color:var(--card);border-top:0}
+  .close h2{color:var(--card)}
+  .close p{color:#CFD7DA;max-width:60ch}
+  .close .eyebrow{color:#7E8F98}
+  .close .eyebrow::after{background:#2B3B48}
+  .pull{
+    font-family:var(--display);text-transform:uppercase;
+    font-size:clamp(1.5rem,1rem + 2.2vw,2.6rem);line-height:1.02;
+    color:var(--lou);margin:2rem 0 1.5rem;max-width:20ch;
+  }
+
+  footer{
+    padding-block:2.5rem;font-family:var(--data);font-size:.6875rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--graphite);
+    display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;
+    border-top:1px solid var(--rule);
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
+    .cell{opacity:1}
+  }
+</style>
 </head>
 <body>
 
-    <nav></nav>
-    <script src="nav.js"></script>
+<header class="hero wrap">
+  <div class="ballot-label">
+    <span>2001 BBWAA Hall of Fame ballot</span>
+    <span>515 ballots cast</span>
+    <span><b>15 named Lou Whitaker</b></span>
+  </div>
 
-    <header class="hero">
-        <p class="subtitle">CoCo by Coaching Constant &mdash; More than an App, It's an Industry-Leading LMS Platform</p>
-        <h1>Where Coaching Becomes Culture.</h1>
-        <p class="subtitle">CoCo Consultants &mdash; A Team of Experienced Business Leaders Available Before, During, and After Configuring CoCo</p>
-        <p class="subtitle">CoCo Creative &mdash; Production Artists Who Ensure Your Training and Coaching Assets Rock</p>
-        <a href="contact.html" class="btn btn-primary">Book a Demo</a>
-        <a href="#updates" class="btn btn-secondary">Sign Up for News &amp; Updates</a>
-        <a href="about.html#careers" class="btn btn-tertiary">Join Our Team</a>
-    </header>
+  <div id="grid" aria-label="A grid of 515 squares representing every ballot cast in the 2001 Hall of Fame election. Fifteen are highlighted: the ballots that named Lou Whitaker." role="img"></div>
 
-    <section class="section">
-        <h2 class="section-title">Problems We Solve</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Operational Consistency that Impacts Customer Experiences and Production Outcomes</h3>
-                <p>Today's operating playbooks don't scale, and director-minion leadership styles don't secure buy-in or sustain engagement. COCO standardizes coaching to drive measurable improvements across your entire operation.</p>
-            </div>
-            <div class="card">
-                <h3>First 90-Day Exits and First Year Exits</h3>
-                <p>Due to weak onboarding, feelings of disconnection, and a sense of overwhelmed expectations — 55% of front-line staff quit within 90 days, and 86.3% leave within the first year. COCO replaces these failures with meaningful connections and clear growth paths.</p>
-            </div>
-        </div>
-    </section>
+  <div class="keyline">
+    <span class="key"><i class="swatch"></i> Ballot without Whitaker</span>
+    <span class="key"><i class="swatch yes"></i> Ballot with Whitaker</span>
+    <span class="key">2.9% &mdash; 5% required to stay on</span>
+  </div>
 
-    <section class="section-alt">
-        <h2 class="section-title">ROI-Driven Outcomes</h2>
-        <div class="grid-3">
-            <div class="card-white">
-                <h3>Clarity in Training and Coaching from Onboarding through Promotion</h3>
-                <p>Establishing clear development paths from initial onboarding through professional promotion — so every employee knows where they stand and where they're headed.</p>
-            </div>
-            <div class="card-white">
-                <h3>Establishing an Environment of Connections and Collaboration</h3>
-                <p>Building high-performance environments where connections and collaboration are the daily cultural standard — not just a training module.</p>
-            </div>
-            <div class="card-white">
-                <h3>Achieving Scaleable and Sustainable Development Paths for Frontline Staff</h3>
-                <p>Creating growth paths that actually stick — scalable systems that develop your people consistently across every location and every shift.</p>
-            </div>
-        </div>
-    </section>
+  <h1>
+    <span>Lou</span>
+    <span>Whitaker</span>
+    <span class="sub">Second base &middot; Detroit Tigers &middot; 1977&ndash;1995 &middot; 75.1 WAR &middot; Not in the Hall of Fame</span>
+  </h1>
 
-    <section class="section">
-        <h2 class="section-title">Industry Credibility</h2>
-        <div class="grid">
-            <div class="testimonial-card">
-                <p class="quote">"Coaching Constant transformed our onboarding process. Our 90-day retention improved by 40%, and supervisors finally have the tools to coach — not just manage."</p>
-                <p class="attribution">— VP of Operations, Major Casino Resort</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="quote">"The CoCo platform gave us real-time visibility into training completion and coaching effectiveness. For the first time, we can prove ROI on our people investment."</p>
-                <p class="attribution">— Director of HR, Hospitality Group</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="quote">"We replaced our static LMS with CoCo and saw engagement rates triple. The gamification isn't gimmicky — it connects to real work outcomes."</p>
-                <p class="attribution">— Regional Operations Manager</p>
-            </div>
-        </div>
-        <img src="assets/operations-team.jpg" alt="Operations Team Collaboration" class="section-image">
-    </section>
+  <div class="hero-body">
+    <div>
+      <p class="lede">Nineteen seasons, one team, one position. More career value than every second baseman elected to Cooperstown in the last forty years except the pre-war giants &mdash; and one year on the ballot before the writers were done with him.</p>
+      <p>What follows is the record. Not the sentiment, not the Tigers-fan grievance: the numbers Whitaker actually put up, set beside the numbers of the men already wearing the plaque. The gap runs the wrong way.</p>
+    </div>
+    <aside class="verdict-card">
+      <h3>The short version</h3>
+      <p>Electing Whitaker would not lower the Hall's standard at second base. It would raise it. He sits above the positional average in career value and roughly at it in JAWS &mdash; and above every 1980s-forward second baseman already enshrined.</p>
+    </aside>
+  </div>
+</header>
 
-    <section class="section-alt">
-        <h2 class="section-title">Our Offerings</h2>
-        <p class="section-subtitle">A complete ecosystem to transform your frontline operations.</p>
-        <div class="grid-3">
-            <div class="card-white">
-                <img src="assets/logo-coco-by-cc.png" alt="CoCo by Coaching Constant" class="card-logo">
-                <img src="assets/offering-app.png" alt="COCO Platform Dashboard" class="card-image">
-                <h3>The CoCo App by Coaching Constant</h3>
-                <p>An industry-leading LMS platform where coaching becomes culture and every shift secures a win. Five integrated interfaces working as a single brain for your organization.</p>
-            </div>
-            <div class="card-white">
-                <img src="assets/offering-consultants.png" alt="CoCo Consulting Team" class="card-image">
-                <h3>CoCo Consultants</h3>
-                <p>A team of experienced business leaders who help impact your business before, during, and after onboarding the CoCo App by Coaching Constant.</p>
-            </div>
-            <div class="card-white">
-                <img src="assets/offering-creative.png" alt="CoCo Creative Team" class="card-image">
-                <h3>CoCo Creative</h3>
-                <p>A team of production artists who help create best-practice training and coaching assets — videos, PDFs, quizzes, tests, and games — best-of-class and impactful.</p>
-            </div>
-        </div>
-    </section>
+<section class="wrap">
+  <p class="eyebrow">The record</p>
+  <h2>What he actually did</h2>
+  <p>A .276 average with a .363 on-base percentage and a 117 OPS+, built on power and plate discipline that were unusual at the position, plus a glove good enough for three Gold Gloves. He appeared in 2,390 games and played second base in 2,308 of them. He never played anywhere else.</p>
 
-    <section class="section">
-        <h2 class="section-title">Our Leadership Team</h2>
-        <div class="team-grid">
-            <div class="member">
-                <div class="member-photo"><img src="assets/tyler.jpg" alt="Tyler Adams"></div>
-                <h4>Tyler Adams</h4>
-                <p>Founder & Visionary</p>
-            </div>
-            <div class="member">
-                <div class="member-photo"><img src="assets/brad.jpg" alt="Brad Johnson"></div>
-                <h4>Brad Johnson</h4>
-                <p>Principal & Architect</p>
-            </div>
-            <div class="member">
-                <div class="member-photo"><img src="assets/dan.jpg" alt="Dan Bourgeois"></div>
-                <h4>Dan Bourgeois</h4>
-                <p>Principal & CEO</p>
-            </div>
-            <div class="member">
-                <div class="member-photo"><img src="assets/cj.jpg" alt="CJ Foster"></div>
-                <h4>CJ Foster</h4>
-                <p>Principal</p>
-            </div>
-        </div>
-    </section>
+  <div class="strip">
+    <div class="stat"><span class="n">75.1</span><span class="l">Career bWAR</span></div>
+    <div class="stat"><span class="n">117</span><span class="l">OPS+</span></div>
+    <div class="stat"><span class="n">2,369</span><span class="l">Hits</span></div>
+    <div class="stat"><span class="n">244</span><span class="l">Home runs</span></div>
+    <div class="stat"><span class="n">1,386</span><span class="l">Runs scored</span></div>
+    <div class="stat"><span class="n">2,308</span><span class="l">Games at 2B</span></div>
+  </div>
+  <div class="strip" style="margin-top:1px">
+    <div class="stat"><span class="n">1978</span><span class="l">AL Rookie of the Year</span></div>
+    <div class="stat"><span class="n">1984</span><span class="l">World Series title</span></div>
+    <div class="stat"><span class="n">5&times;</span><span class="l">All-Star</span></div>
+    <div class="stat"><span class="n">3&times;</span><span class="l">Gold Glove</span></div>
+    <div class="stat"><span class="n">4&times;</span><span class="l">Silver Slugger</span></div>
+    <div class="stat"><span class="n">51st</span><span class="l">All-time position-player WAR</span></div>
+  </div>
+</section>
 
-    <footer></footer>
-    <script src="footer.js"></script>
+<section class="wrap">
+  <p class="eyebrow">Where he ranks</p>
+  <h2>Career WAR at second base</h2>
+  <p>Every second baseman here is either in the Hall of Fame or has a live case. Whitaker leads all of them. The bar for induction at the position &mdash; the average of everyone already in &mdash; is 69.4 career WAR and 56.9 JAWS.</p>
 
+  <div class="chart" id="chart"></div>
+
+  <div class="chart-key">
+    <span class="key"><i class="dot in" style="width:7px;height:7px"></i> In the Hall of Fame</span>
+    <span class="key"><i class="dot out" style="width:7px;height:7px"></i> Not in</span>
+    <span>Bars: career WAR &middot; Figure: JAWS</span>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">Side by side</p>
+  <h2>The men with the plaques</h2>
+  <p>JAWS averages a player's career WAR with his seven best seasons, so it rewards peak and longevity together. The Hall's own average at second base is 69.4 / 44.4 / 56.9. Whitaker clears the first, misses the second, and lands on the third.</p>
+
+  <div class="scroller">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Player</th>
+          <th scope="col">Status</th>
+          <th scope="col">WAR</th>
+          <th scope="col">WAR7</th>
+          <th scope="col">JAWS</th>
+          <th scope="col">OPS+</th>
+          <th scope="col">Hits</th>
+          <th scope="col">HR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="me">
+          <td>Lou Whitaker</td><td class="status">Not in</td>
+          <td>75.1</td><td>37.9</td><td>56.4</td><td>117</td><td>2,369</td><td>244</td>
+        </tr>
+        <tr>
+          <td>Ryne Sandberg</td><td class="status">HOF 2005</td>
+          <td>68.0</td><td>46.2</td><td>57.1</td><td>114</td><td>2,386</td><td>282</td>
+        </tr>
+        <tr>
+          <td>Roberto Alomar</td><td class="status">HOF 2011</td>
+          <td>67.1</td><td>42.9</td><td>55.0</td><td>116</td><td>2,724</td><td>210</td>
+        </tr>
+        <tr>
+          <td>Craig Biggio</td><td class="status">HOF 2015</td>
+          <td>65.5</td><td>41.8</td><td>53.6</td><td>112</td><td>3,060</td><td>291</td>
+        </tr>
+        <tr>
+          <td>Joe Gordon</td><td class="status">HOF 2009</td>
+          <td>57.2</td><td>41.9</td><td>49.6</td><td>120</td><td>1,530</td><td>253</td>
+        </tr>
+        <tr>
+          <td>Jeff Kent</td><td class="status">HOF 2026</td>
+          <td>55.4</td><td>35.6</td><td>45.5</td><td>123</td><td>2,461</td><td>377</td>
+        </tr>
+        <tr>
+          <td>Bobby Doerr</td><td class="status">HOF 1986</td>
+          <td>51.2</td><td>34.4</td><td>42.8</td><td>115</td><td>2,042</td><td>223</td>
+        </tr>
+        <tr>
+          <td>Nellie Fox</td><td class="status">HOF 1997</td>
+          <td>49.4</td><td>33.9</td><td>41.6</td><td>93</td><td>2,663</td><td>35</td>
+        </tr>
+        <tr>
+          <td>Bill Mazeroski</td><td class="status">HOF 2001</td>
+          <td>36.5</td><td>30.4</td><td>33.5</td><td>84</td><td>2,016</td><td>138</td>
+        </tr>
+        <tr>
+          <td>Alan Trammell <span class="status">(SS)</span></td><td class="status">HOF 2018</td>
+          <td>70.7</td><td>44.6</td><td>57.7</td><td>110</td><td>2,365</td><td>185</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:1rem;font-family:var(--data);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite)">Trammell, his double-play partner for 19 years, was elected in 2018 with 4.4 fewer wins of career value.</p>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">The argument</p>
+  <h2>Both sides, honestly</h2>
+
+  <div class="split">
+    <div class="col for">
+      <h3 class="lou">Why he belongs</h3>
+      <ul>
+        <li><b>The Hall has already set the line below him.</b> Mazeroski went in at 36.5 WAR, Fox at 49.4, Kent at 55.4. No coherent standard admits those three and excludes 75.1.</li>
+        <li><b>Nearly everyone above him is already in.</b> Among eligible position players with more career WAR, the only ones outside Cooperstown are tied to steroids, a gambling ban, or the Deadball era.</li>
+        <li><b>Position and defense count.</b> He played 2,308 games at second and finished 77 fielding runs above average, a full-time contributor on both sides of the ball for two decades.</li>
+        <li><b>The 2001 vote was a measurement failure.</b> WAR wasn't in circulation, on-base percentage was undervalued, and defense was a matter of reputation. Whitaker's whole game lived in the categories the electorate couldn't see.</li>
+      </ul>
+    </div>
+    <div class="col against">
+      <h3>Why voters said no</h3>
+      <ul>
+        <li><b>No peak.</b> His best seven seasons total about 37.9 WAR, well under the positional average of 44.4 and roughly 20th all-time at second base. He was a four-win player for a very long time, never an eight-win one.</li>
+        <li><b>No hardware, no black ink.</b> Five All-Star selections in nineteen years, no MVP contention, and he never led the league in anything that mattered.</li>
+        <li><b>No milestones.</b> 2,369 hits and 244 home runs trip none of the round numbers that carried lesser players onto ballots.</li>
+        <li><b>No campaign.</b> He was quiet, played his whole career in one market, and retired into near-total public silence. Nobody argued for him while it still counted.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">The candidacy</p>
+  <h2>Twenty-five years of no</h2>
+
+  <div class="tl">
+    <div class="ev">
+      <span class="when">Oct 1995</span>
+      <p class="what">Whitaker retires after nineteen seasons, all with Detroit.</p>
+    </div>
+    <div class="ev hit">
+      <span class="when">Jan 2001</span>
+      <p class="what"><b>15 of 515 ballots. 2.9%.</b> Below the 5% threshold, so he is removed from BBWAA consideration permanently after one year.</p>
+    </div>
+    <div class="ev hit">
+      <span class="when">Dec 2019</span>
+      <p class="what">Modern Baseball Era Committee: <b>6 of 16 votes.</b> Twelve were needed. Ted Simmons and Marvin Miller are elected instead.</p>
+    </div>
+    <div class="ev">
+      <span class="when">Aug 2022</span>
+      <p class="what">The Tigers retire his number 1 &mdash; an honor the franchise had almost entirely reserved for Hall of Famers.</p>
+    </div>
+    <div class="ev hit">
+      <span class="when">Nov 2025</span>
+      <p class="what">The eight-name Contemporary Baseball Era ballot is released. <b>Whitaker isn't on it.</b> An eleven-person historical overview committee, not the electors, made that call.</p>
+    </div>
+    <div class="ev">
+      <span class="when">Dec 2025</span>
+      <p class="what">Jeff Kent is elected with 14 of 16 votes, entering Cooperstown with 55.4 career WAR &mdash; nearly twenty wins fewer than Whitaker.</p>
+    </div>
+    <div class="ev">
+      <span class="when">Dec 2028</span>
+      <p class="what">The next time the Contemporary Baseball Era players ballot is considered. Whitaker will be 71.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">He isn't alone</p>
+  <h2>The one-and-done club</h2>
+  <p>Whitaker belongs to a cohort of players whose value came from defense, walks, baserunning and durability &mdash; everything the pre-WAR electorate couldn't measure. They all left the ballot in a hurry.</p>
+
+  <div class="scroller">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Player</th>
+          <th scope="col">Pos</th>
+          <th scope="col">WAR</th>
+          <th scope="col">First ballot</th>
+          <th scope="col">Since</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bill Dahlen</td><td>SS</td><td>75.3</td><td>&mdash;</td><td class="status">Never close</td></tr>
+        <tr class="me"><td>Lou Whitaker</td><td>2B</td><td>75.1</td><td>2.9% (2001)</td><td class="status">6/16 in 2019</td></tr>
+        <tr><td>Bobby Grich</td><td>2B</td><td>71.1</td><td>2.6% (1992)</td><td class="status">No era ballot</td></tr>
+        <tr><td>Kenny Lofton</td><td>CF</td><td>68.4</td><td>3.2% (2013)</td><td class="status">No era ballot</td></tr>
+        <tr><td>Graig Nettles</td><td>3B</td><td>68.0</td><td>8.3% (1994)</td><td class="status">4 years, then out</td></tr>
+        <tr><td>Rick Reuschel</td><td>SP</td><td>68.2</td><td>0.4% (1997)</td><td class="status">No era ballot</td></tr>
+        <tr><td>Dwight Evans</td><td>RF</td><td>67.1</td><td>5.9% (1997)</td><td class="status">8/16 in 2019</td></tr>
+        <tr><td>Buddy Bell</td><td>3B</td><td>66.3</td><td>1.7% (1995)</td><td class="status">Out</td></tr>
+        <tr><td>Willie Randolph</td><td>2B</td><td>65.9</td><td>1.1% (1998)</td><td class="status">Out</td></tr>
+        <tr><td>Reggie Smith</td><td>RF</td><td>64.6</td><td>0.7% (1988)</td><td class="status">Out</td></tr>
+        <tr><td>Jim Edmonds</td><td>CF</td><td>60.4</td><td>2.5% (2016)</td><td class="status">Out</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:1.5rem">There is a counter-trend, and it's the best reason for optimism. Ron Santo, Alan Trammell, Ted Simmons, Scott Rolen and Dick Allen all cleared eventually. So did Andruw Jones, in January 2026 &mdash; a defense-first case that opened at 7.3% of the vote, the lowest debut ever for a player the writers later elected, and finished at 78.4% in his ninth year.</p>
+  <p>The difference is that Jones stayed on the ballot long enough for the electorate to turn over. Whitaker, Grich, Lofton and Randolph never got that.</p>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <p class="eyebrow">The verdict</p>
+    <h2>He belongs</h2>
+    <p>Not as an inner-circle immortal. Whitaker was a four-to-five win player who showed up every day for nineteen years, and the case against him &mdash; that peak dominance should count for more than accumulated value &mdash; is a legitimate philosophy held by serious people.</p>
+    <p class="pull">It just isn't the philosophy the Hall has applied at second base.</p>
+    <p>Once you have enshrined Mazeroski at 36.5 wins, Fox at 49.4, Doerr at 51.2 and Kent at 55.4, the question stops being whether Whitaker is good enough. It becomes why the standard changed for him. The obstacle now is procedural, not evaluative: eight ballot slots, a crowded era, and a screening committee that has passed him over twice running.</p>
+    <p>December 2028 is the next real test.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>Statistics via Baseball-Reference &amp; JAWS</span>
+    <span>Voting records via the National Baseball Hall of Fame</span>
+    <span>Updated August 2026</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var grid = document.getElementById('grid');
+  var TOTAL = 515, YES = 15;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var picks = {}, seed = 20010116;
+  function rnd(){ seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+  while (Object.keys(picks).length < YES) { picks[Math.floor(rnd() * TOTAL)] = true; }
+
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < TOTAL; i++) {
+    var c = document.createElement('span');
+    c.className = 'cell' + (picks[i] ? ' yes' : '');
+    c.style.animationDelay = reduce ? '0ms' : (i * 1.6) + 'ms';
+    frag.appendChild(c);
+  }
+  grid.appendChild(frag);
+
+  var players = [
+    { name:'Whitaker',  war:75.1, jaws:56.4, hof:false, me:true },
+    { name:'Grich',     war:71.1, jaws:58.7, hof:false },
+    { name:'Sandberg',  war:68.0, jaws:57.1, hof:true },
+    { name:'Alomar',    war:67.1, jaws:55.0, hof:true },
+    { name:'Biggio',    war:65.5, jaws:53.6, hof:true },
+    { name:'Utley',     war:64.5, jaws:56.9, hof:false },
+    { name:'Gordon',    war:57.2, jaws:49.6, hof:true },
+    { name:'Kent',      war:55.4, jaws:45.5, hof:true },
+    { name:'Doerr',     war:51.2, jaws:42.8, hof:true },
+    { name:'Fox',       war:49.4, jaws:41.6, hof:true },
+    { name:'Mazeroski', war:36.5, jaws:33.5, hof:true }
+  ];
+  var chart = document.getElementById('chart');
+  var max = 75.1;
+
+  players.forEach(function(p, idx){
+    var row = document.createElement('div');
+    row.className = 'row' + (p.me ? ' me' : '');
+    row.innerHTML =
+      '<span class="name"><i class="dot ' + (p.hof ? 'in' : 'out') + '"></i>' + p.name + '</span>' +
+      '<span class="track"><i class="bar" style="width:' + ((p.war / max) * 100).toFixed(1) + '%"></i></span>' +
+      '<span class="v">' + p.jaws.toFixed(1) + '</span>';
+    chart.appendChild(row);
+
+    if (!reduce) {
+      var bar = row.querySelector('.bar');
+      bar.style.transform = 'scaleX(0)';
+      bar.style.transition = 'transform .7s cubic-bezier(.2,.7,.3,1) ' + (idx * 55) + 'ms';
+    }
+  });
+
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          chart.querySelectorAll('.bar').forEach(function(b){ b.style.transform = 'scaleX(1)'; });
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    io.observe(chart);
+  }
+})();
+</script>
 </body>
 </html>
